@@ -1,0 +1,78 @@
+::placeholder{
+    color: #343a40;
+}
+
+#dropdownlist .dropdownitem:hover,
+#dropdownlist .dropdownitem:active{
+    background: #343a40;
+    color: white;
+}
+
+#dropdownlist .dropdownitem{
+    color: #343a40;
+    background: white;
+}
+
+.display{
+    font-size: 16px;
+}
+
+.side {
+    color: #343a40;
+}
+
+.add-border {
+    font-size: 20px;
+    border: 1px solid #343a40
+}
+
+.add-transparency:not(:hover) {
+    opacity: 0.6;
+}
+
+.lines{
+    width: 80%;
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    background-color:lightgray;
+}
+
+.sidebar-open {
+    height: 100vh;
+    background: white;
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem;
+    align-content: space-around;
+    position: relative;
+    width: 230px;
+    box-shadow: 2px 0px 3px grey;
+  }
+
+.sidebar-close {
+    position: relative;
+    height: 100vh;
+    width: 0%;
+    transition: left .3s ease-in-out;
+}
+
+
+.toggleButton-open {
+    position: absolute;
+    left: 230px;
+    height: 100%;
+    width: 30px;
+    z-index: 1;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .toggleButton-close {
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    width: 30px;
+    z-index: 1;
+    outline: none;
+    box-shadow: none;
+  }
