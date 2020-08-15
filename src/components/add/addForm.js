@@ -9,7 +9,18 @@ export default class AddForm extends React.Component{
         this.state = {
             lat: "",
             lng: "",
+            img: null
         }
+    }
+
+    previewImage = (val) => {
+        var file = val.target.files[0]
+        const prev = URL.createObjectURL(file)
+
+        this.setState({
+            img: prev
+        })
+
     }
 
     mapCoordCallback = (lat, lng) => {
@@ -22,14 +33,16 @@ export default class AddForm extends React.Component{
     createAddFormFields(){
         return (
             <Form>
-                <Form.Group controlId="occurrenceImage">
-                    <Form.Label>Occurrence Image</Form.Label>
-                    <Form.Control type="file"></Form.Control>
-                    <Form.Text className="text-muted">
-                        Please input the image of the occurrence.
-                    </Form.Text>
-
-                </Form.Group>
+                <Form.Row>
+                    <Form.Group controlId="occurrenceImage">
+                        <Form.Label>Occurrence Image</Form.Label>
+                        <Form.Control type="file" onChange={this.previewImage}></Form.Control>
+                        <Form.Text className="text-muted">
+                            Please input the image of the occurrence.
+                        </Form.Text>
+                    </Form.Group>
+                    {this.state.img != null ? <img src={this.state.img} alt="occurrence" style={{maxWidth:128, height:"auto"}}/> : <div></div>}
+                </Form.Row>
                 <Form.Group controlId="dateInput">
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date"></Form.Control>
