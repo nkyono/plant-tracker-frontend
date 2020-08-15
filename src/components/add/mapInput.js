@@ -10,24 +10,6 @@ class MapInput extends React.Component {
     }
   }
 
-  setUserPosition = (position) => {
-    this.setState({
-      lat:position.coords.latitude,
-      lng:position.coords.longitude
-    })
-  }
-
-  setUserPositionErr = () => {
-    this.setState({
-      lat:39.8283,
-      lng:-98.5795
-    })
-  }
-
-  componentDidMount(){
-    navigator.geolocation.getCurrentPosition(this.setUserPosition, this.setUserPositionErr)
-  }
-
   retLatLng = (t, map, coord) => {
     const {latLng} = coord
     this.props.mapCoordCallback(latLng.lat(), latLng.lng())
@@ -39,10 +21,7 @@ class MapInput extends React.Component {
         <Map
             google={this.props.google}
             zoom={4}
-            center={{
-              lat:this.state.lat,
-              lng:this.state.lng
-            }}
+            centerAroundCurrentLocation="true"
             onClick = {this.retLatLng}
         >
         </Map>
