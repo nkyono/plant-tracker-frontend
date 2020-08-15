@@ -90,7 +90,7 @@ class MapContainer extends React.Component {
     // commented out because it causes weird zooms due to dynamically changing inputs
     var bounds = new this.props.google.maps.LatLngBounds()
     if(error){
-        return <div>Error: {error.message}</div>
+        return <div>Error: {error.message} occurrences</div>
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {

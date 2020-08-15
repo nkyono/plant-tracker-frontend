@@ -1,12 +1,13 @@
 import React from 'react';
 import NavButtons from './Nav/NavButtons'
+import AddForm from './add/addForm'
 
 
 export default class AddOccurrencePage extends React.Component{
 
     render(){
       return (
-        <div>
+        <body className="add-body">
           <div className="sidebar-open">
             <div style={{fontSize:30}}>
               <span><b>Add Occurrence</b></span>
@@ -17,7 +18,10 @@ export default class AddOccurrencePage extends React.Component{
                   {label: "Occurrences", path: "../map"}
             ]}/>
           </div>
-        </div>
+          <div style={{padding:20}}>
+            <AddForm/>
+          </div>
+        </body>
       )};
   }
   
