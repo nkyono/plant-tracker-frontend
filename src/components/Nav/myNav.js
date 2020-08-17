@@ -19,12 +19,14 @@ export default class MyNavBar extends React.Component{
         )
     }
 
+    // resets form
     resetPage(){
         this.props.dateFromCallback("")
         this.props.dateToCallback("")
         this.props.accuracyCallback(0)
     }
 
+    // creates the input fields to be filtered on. Sets onchange events to call the callbacks that allow map occurrences to be filtered
     createInputFields(){
         return (
             <form onSubmit={event => event.preventDefault()} onReset={event => this.resetPage()}>

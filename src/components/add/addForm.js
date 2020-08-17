@@ -19,6 +19,7 @@ export default class AddForm extends React.Component{
         }
     }
 
+    // used to set preview image once user uploads an image
     previewImage = (val) => {
         var file = val.target.files[0]
         const prev = URL.createObjectURL(file)
@@ -29,6 +30,7 @@ export default class AddForm extends React.Component{
 
     }
 
+    // returns user picked latitude and longitude. truncates at 5 decimal spots
     mapCoordCallback = (lat, lng) => {
         this.setState({
             lat: Number(lat.toFixed(5)),

@@ -28,12 +28,14 @@ export default class MapPage extends React.Component{
   plantCallback = (p) => {
     this.setState({plant: p})
   }
+  // callback functions used to set the occurrences date range
   dateToCallback = (dT) => {
     this.setState({dateTo: dT})
   }
   dateFromCallback = (dF) => {
     this.setState({dateFrom: dF})
   }
+  // callback function used to get minimum occurrence accuracy
   accuracyCallback = (a) => {
     this.setState({accuracy: a})
   }

@@ -31,6 +31,7 @@ class MapInput extends React.Component {
     })
   }
 
+  // once component is mounted, check if user allows location to be used. If allowed set current center to user location, else center of US
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(this.setUserPosition, this.setUserPositionErr)
   }
