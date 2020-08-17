@@ -3,13 +3,19 @@ import {Form, Button, Col} from 'react-bootstrap';
 import './addForm.css'
 import MapInput from "./mapInput";
 
+// The occurrence databse has: OccurrenceID, PlantID, Date, Accuracy, Latitude, Longitude
+// For adding an occurrence the user will input: date, location, and image
+// the application will then use machine learning to identify the species and accuracy
+
+
 export default class AddForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             lat: "",
             lng: "",
-            img: null
+            img: null,
+            date: "",
         }
     }
 
@@ -30,22 +36,53 @@ export default class AddForm extends React.Component{
         })
     }
 
+    // when machine learninng component is added, remove plantID and accuracy (plantID and accuracy should be replaced by model)
+    // occurrenceID is replaced in backend before addition to database
+    addOccurrence = () => {
+        console.log("occurrence: ")
+        console.log(this.state.date)
+        console.log(this.state.lat)
+        console.log(this.state.lng)
+        /*
+        fetch('http://localhost:8000/occurrences', {
+            method: 'post',
+            body: JSON.stringify({
+                OccurrenceID: 'occurrenceID',
+                Date: this.state.date, 
+                Accuracy: '0.0',
+                Latitude: this.state.lat,
+                Longitude: this.state.lng,
+                PlantID: '0'
+            })
+        }).then(function(res) {
+            return res.json()
+        })
+        */
+    }
+
+    // TODO: Fix the vertical alignment issue for input picture
+    // also need to set up s3 bucket and add function for uploading picture
+
     createAddFormFields(){
         return (
-            <Form>
+            <Form onSubmit={this.addOccurrence}>
                 <Form.Row>
                     <Form.Group controlId="occurrenceImage">
-                        <Form.Label>Occurrence Image</Form.Label>
-                        <Form.Control type="file" onChange={this.previewImage}></Form.Control>
+                        <Form.File id="occurImage" onChange={this.previewImage} label="Occurrence Image"></Form.File>
                         <Form.Text className="text-muted">
                             Please input the image of the occurrence.
                         </Form.Text>
                     </Form.Group>
-                    {this.state.img != null ? <img src={this.state.img} alt="occurrence" style={{maxWidth:128, height:"auto"}}/> : <div></div>}
+                    <div style={{display:"table-cell", textAlign:"center", verticalAlign:"middle", height:128, width:128, borderWidth:2, borderStyle:"solid", borderColor:"black"}}>
+                        {this.state.img != null ? 
+                            <img src={this.state.img} alt="occurrence"/> : 
+                            <div style={{height:"100%",width:"100%",backgroundColor:"grey"}}/>
+                        }
+                    </div>
                 </Form.Row>
                 <Form.Group controlId="dateInput">
                     <Form.Label>Date</Form.Label>
-                    <Form.Control type="date"></Form.Control>
+                    <Form.Control type="date" onChange={(e) => {this.setState({date:e.target.value.replace(/-/g,"")})}}></Form.Control>
                     <Form.Text className="text-muted">
                         Please input the date of the occurrence.
                     </Form.Text>
