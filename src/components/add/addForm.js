@@ -64,6 +64,7 @@ export default class AddForm extends React.Component{
 
     // TODO: Fix the vertical alignment issue for input picture
     // also need to set up s3 bucket and add function for uploading picture
+    // TODO: think about form validation. What do I want to be required, what would default be?
 
     createAddFormFields(){
         return (
